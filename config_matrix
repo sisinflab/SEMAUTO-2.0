@@ -1,0 +1,11 @@
+[DEFAULT]
+
+dbpedia_map = dbpediamap.tsv
+sparql_endpoint = http://dbpedia.org/sparql
+training_file = train-1m.tsv
+
+directory = nets
+
+predicates_file = abstat
+
+kg_dir = KG
