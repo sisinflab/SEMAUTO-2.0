@@ -96,5 +96,3 @@ save = predictions
 ## Evaluation
 
 We used the well know [RankSys](https://github.com/RankSys/RankSys) Java library to evaluate our recommendations.
-
-## Results
