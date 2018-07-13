@@ -40,6 +40,52 @@ directory = KG
 predicates_file = predicates
 ```
 
+SEMAUTO
+```
+[SEMAUTO]
+# Directory in which to store matrices used by SEMAUTO
+directory = nets
+
+# Directory in which to store users profile
+user_profiles_dir = UP
+```
+
+Word2Vec
+```
+[W2V]
+# Voucaboulary of features
+features_file = features_space.txt
+
+# File containing a senteces made of pairs of feature and its weight (ie. feature_name-0.3)
+senteces_file = sentences.tsv
+
+# Map of indexed features
+features_dict_file = features_map.dict
+
+# Directory in which to save new enhanced users profile
+newDir = w2vUP
+
+# Keep users' order of the data listed in sentences_file
+users_sentences = user_sentences.tsv
+
+# Word2Vec model params (using gensim framework)
+epochs = 50
+size = 100
+window = 500
+min_count = 1
+```
+
+Item-KNN
+```
+[VSM]
+
+# List of neighboorhoods size
+knn_file = knns.txt
+
+# Recommendation output file
+save = predictions
+```
+
 ## Evaluation
 
 We used the well know [RankSys](https://github.com/RankSys/RankSys) Java library to evaluate our recommendations.
