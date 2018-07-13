@@ -20,7 +20,7 @@ SEMAUTO is a Semantics-Aware Autoencoder Neural Network which exploits knowledge
 
 All the config params are placed in config.ini file.
 
-### Train and test files
+#### Train and test files
 ```
 [DEFAULT]
 
@@ -31,7 +31,7 @@ training_file = train-1m.tsv
 test_file = test-1m.tsv
 ```
 
-### Knowledge Graph settings
+#### Knowledge Graph settings
 ```
 [KG]
 # Mapping file
@@ -47,7 +47,7 @@ directory = KG
 predicates_file = predicates
 ```
 
-### SEMAUTO
+#### SEMAUTO
 ```
 [SEMAUTO]
 # Directory in which to store matrices used by SEMAUTO
@@ -57,7 +57,7 @@ directory = nets
 user_profiles_dir = UP
 ```
 
-### Word2Vec
+#### Word2Vec
 ```
 [W2V]
 # Voucaboulary of features
@@ -82,7 +82,7 @@ window = 500
 min_count = 1
 ```
 
-### Item-KNN
+#### Item-KNN
 ```
 [VSM]
 
