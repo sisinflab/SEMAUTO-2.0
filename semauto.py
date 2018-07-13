@@ -4,9 +4,22 @@ import tensorflow as tf
 
 import sys
 from os import environ
+from os.path import exists
+from os import makedirs
 from sklearn import preprocessing
 import progressbar
 from scipy.io import mmread as load
+
+import configparser as cfg
+
+
+config_filename = sys.argv[1]
+
+config = cfg.ConfigParser()
+config.read(config_filename)
+
+
+
 
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_integer('num_gpus', 1, "How many GPUs to use.")
@@ -19,8 +32,12 @@ epochs = 1000
 
 learning_rate = 0.3
 
-train_data = sys.argv[1]
-matrix_dir = sys.argv[2]
+train_data = config['DEFAULT']['training_file']
+matrix_dir = config['SEMAUTO']['directory']
+up_dir = config['SEMAUTO']['user_profiles_dir']
+
+if not exists(up_dir):
+    makedirs(up_dir)
 
 
 # Reading dataset
@@ -113,7 +130,7 @@ with progressbar.ProgressBar(max_value=num_users) as bar:
                     values = session.run(extract_op, feed_dict={X: matrix, M: mask})
                     min_max_scaler = preprocessing.MinMaxScaler()
                     values = values.reshape([-1, 1])
-                    values = values.ravel()
+                    # values = values.ravel()
                     x_scaled = min_max_scaler.fit_transform(values)
 
                     values = x_scaled.squeeze()
@@ -124,7 +141,7 @@ with progressbar.ProgressBar(max_value=num_users) as bar:
 
                     s = [(k, up[k]) for k in sorted(up, key=up.get, reverse=True)]
 
-                    with open("UP/{}.tsv".format(users[user]), "w") as file:
+                    with open("{}/{}.tsv".format(up_dir, users[user]), "w") as file:
                         for k, v in s:
                             file.write("{}\t{:.16f}\n".format(k, v))
 

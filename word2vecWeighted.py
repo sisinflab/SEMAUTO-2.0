@@ -1,6 +1,8 @@
 #! /usr/bin/python3 -u
 
 import sys
+from os.path import exists
+from os import makedirs
 
 from gensim.models import Word2Vec as word2vec
 import numpy as np
@@ -11,25 +13,37 @@ from sklearn import preprocessing
 
 from multiprocessing import cpu_count, Pool as mpPool
 
-
-senteces_file = sys.argv[1]
-
-features_dict_file = sys.argv[2]
-
-usersDir = sys.argv[3]
-
-newDir = sys.argv[4]
-
-users_sentences = sys.argv[5]
-
-epochs = int(sys.argv[6])
-
-size = int(sys.argv[7])
-
-window = int(sys.argv[8])
+import configparser as cfg
 
 
-min_count = 1
+config_filename = sys.argv[1]
+
+config = cfg.ConfigParser()
+config.read(config_filename)
+
+
+
+senteces_file = config['W2V']['senteces_file']
+
+features_dict_file = config['W2V']['features_dict_file']
+
+usersDir = config['SEMAUTO']['user_profiles_dir'] + '/'
+
+newDir = config['W2V']['newDir'] + '/'
+
+users_sentences = config['W2V']['users_sentences']
+
+epochs = int(config['W2V']['epochs'])
+
+size = int(config['W2V']['size'])
+
+window = int(config['W2V']['window'])
+
+min_count = int(config['W2V']['min_count'])
+
+
+if not exists(newDir):
+    makedirs(newDir)
 
 #######################################################################################
 

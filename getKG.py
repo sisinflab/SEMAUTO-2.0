@@ -14,9 +14,9 @@ config_filename = sys.argv[1]
 config = cfg.ConfigParser()
 config.read(config_filename)
 
-dir = config['DEFAULT']['directory'] + "/"
+dir = config['KG']['directory'] + "/"
 
-predicates_file = config['DEFAULT']['predicates_file']
+predicates_file = config['KG']['predicates_file']
 
 ########################################################################################################################
 
@@ -40,7 +40,7 @@ def getSPARQLResults(item):
 
         subject = dbpediaMap[item]
 
-        sparql = SPARQLWrapper(config['DEFAULT']['sparql_endpoint'])
+        sparql = SPARQLWrapper(config['KG']['sparql_endpoint'])
 
         sparql.setQuery("""
             SELECT ?object
@@ -60,7 +60,7 @@ def getSPARQLResults(item):
 print("Loading...")
 
 # dbpedia map
-filename = config['DEFAULT']['dbpedia_map']
+filename = config['KG']['dbpedia_map']
 file = open(filename, "r", encoding="utf-8")
 lines = file.read().splitlines()
 file.close()

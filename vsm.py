@@ -5,13 +5,23 @@ import sys
 import numpy as np
 import sklearn.metrics.pairwise as skl
 
-user_file = sys.argv[1]
-user_dir = sys.argv[2]
-feat_file = sys.argv[3]
-train_file = sys.argv[4]
-save = sys.argv[5]
+import configparser as cfg
 
-knn_file = sys.argv[6]
+
+config_filename = sys.argv[1]
+
+config = cfg.ConfigParser()
+config.read(config_filename)
+
+
+
+user_file = config['W2V']['users_sentences']
+user_dir = config['W2V']['newDir'] + '/'
+feat_file = config['W2V']['features_file']
+train_file = config['DEFAULT']['training_file']
+save = config['VSM']['save']
+
+knn_file = config['VSM']['knn_file']
 
 ############################################################################################################
 

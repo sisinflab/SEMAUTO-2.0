@@ -13,9 +13,12 @@ config_filename = sys.argv[1]
 config = cfg.ConfigParser()
 config.read(config_filename)
 
-dir = config['DEFAULT']['directory'] + "/"
+dir = config['SEMAUTO']['directory'] + "/"
 
-kg_dir = config['DEFAULT']['kg_dir']
+kg_dir = config['KG']['directory']
+
+if not os.path.exists(dir):
+    os.makedirs(dir)
 
 ########################################################################################################################
 
@@ -69,7 +72,7 @@ class Rate:
 print("Loading...")
 
 # dbpedia map
-filename = config['DEFAULT']['dbpedia_map']
+filename = config['KG']['dbpedia_map']
 file = open(filename, "r", encoding="utf-8")
 lines = file.read().splitlines()
 file.close()
@@ -86,8 +89,6 @@ file.close()
 items = set()
 users = set()
 
-usersList = []
-
 for line in lines:
     words = line.split("\t")
     # user, item, rate, timestamp = line.split("\t")
@@ -99,6 +100,7 @@ for line in lines:
         items.add(item)
     users.add(user)
 
+usersList = list(users)
 itemsList = list(items)
 
 print(filename + " loaded. \n\tItems: {} \n\tUsers: {}".format(len(items), len(users)))

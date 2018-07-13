@@ -5,9 +5,21 @@ from os import listdir
 from sklearn import preprocessing
 import numpy as np
 
-featuresFilename = sys.argv[1]
+import configparser as cfg
 
-usersDir = sys.argv[2]
+
+config_filename = sys.argv[1]
+
+config = cfg.ConfigParser()
+config.read(config_filename)
+
+featuresFilename = config['W2V']['features_file']
+
+usersDir = config['SEMAUTO']['user_profiles_dir'] + '/'
+
+features_dict_file = config['W2V']['features_dict_file']
+sentences_file = config['W2V']['senteces_file']
+user_sentences = config['W2V']['users_sentences']
 
 ################################################################################################
 
@@ -20,7 +32,7 @@ featuresFile.close()
 for index, feature in enumerate(features):
     indexmap[feature] = str(index)
 
-file = open("features_map.dict", "w", encoding='utf-8')
+file = open(features_dict_file, "w", encoding='utf-8')
 for key in indexmap:
     file.write(indexmap[key] + "\t" + key + "\n")
 file.close()
@@ -33,8 +45,8 @@ users = listdir(usersDir)
 
 usersToWrite = []
 
-sentences = open("sentences.tsv", "w")
-users_file = open("user_sentences.tsv", "w")
+sentences = open(sentences_file, "w")
+users_file = open(user_sentences, "w")
 for index, user in enumerate(users):
 
     users_file.write(user[:-4] + '\n')

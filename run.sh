@@ -1,36 +1,32 @@
 #!/usr/bin/bash
 
+source <(grep = config.ini | sed 's/ *= */=/g')
+
 # get User Profiles with SEMAUTO
 
-python3 getKG.py config_KG
+python3 getKG.py config.ini
 
-python3 matrix.py config_matrix
+python3 matrix.py config.ini
 
-python3 semauto.py train-1m.tsv nets
+python3 semauto.py config.ini
 
+awk '{print $1}' $user_profiles_dir/* | sort -u > $features_file
 
 ########################################################################################################################
 
 # WORD2VEC approach to augument each user's profile
 
-epochs=50
-size=100
-window=500
+python3 getSentencesWeighted.py config.ini
 
-pred="predictions"
+python3 word2vecWeighted.py config.ini
 
-knn_file=knns.txt
+python3 -u vsm.py config.ini
 
-python3 word2vecWeighted.py sentences.tsv features_map.dict UP/ w2vUP/ user_sentences.tsv $epochs $size $window
+########################################################################################################################
 
-python3 -u vsm.py user_sentences.tsv w2vUP/ feature_space.txt train-1m.tsv $pred $knn_file
+# Evaluation with RankSys framework
 
-
-# K="5 10 15 20 25 30 35 40 45 50 100 150 250 500 1000"
 K=$(cat $knn_file)
-
-train=train-1m.tsv
-test=test-1m.tsv
 
 genre=genre
 
@@ -40,7 +36,7 @@ evl="evaluation"
 
 for i in $K;
 do
-	results=$(java -jar $oracle $train $test $genre $pred$i 4 10)
+	results=$(java -jar $oracle $training_file $test_file $genre $save$i 4 10)
 	echo K=$i >> $evl
 	echo $results >> $evl
 	echo K=$i
