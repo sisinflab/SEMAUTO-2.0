@@ -6,6 +6,8 @@ Semantics-Aware Autoencoder Neural Network implemented in TensorFlow
 
 Vito Bellini, Angelo Schiavone, Tommaso Di Noia, Azzurra Ragone, Eugenio Di Sciascio
 
+[PDF](https://arxiv.org/abs/1807.05006)
+
 ### Abstract
 In the last years, deep learning has shown to be a game-changing technology in artificial intelligence thanks to the numerous successes it reached in diverse application fields. Among others, the use of deep learning for the recommendation problem, although new, looks quite promising due to its positive performances in terms of accuracy of recommendation results. In a
 recommendation setting, in order to predict user ratings on unknown items a possible configuration of a deep neural network is that of autoencoders tipically used to produce a lower dimensionality representation of the original
