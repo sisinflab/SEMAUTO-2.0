@@ -1,5 +1,6 @@
 # SEMAUTO-2.0
-Semantics-Aware Autoencoder Neural Network implemented in TensorFlow.
+
+## Semantics-Aware Autoencoder Neural Network implemented in TensorFlow.
 
 SEMAUTO is a Semantics-Aware Autoencoder Neural Network which exploits knowledge encoded in a Knowledge Graph in order to build an Autoencoder whose topology reflects connections in the KG to weigh features related to rated items to build an explicit representation of the user profile.
 
@@ -13,7 +14,7 @@ The evaluation has been performed by adopting the [RankSys](https://github.com/R
 If you publish research that uses SEMAUTO-2.0, please cite it as
 ~~~
 @InProceedings{DOTD16, 
- author = {Vito Bellini, Angelo Schiavone, Tommaso {Di Noia}, Azzurra Ragone, Eugenio {Di Sciascio},
+ author = {Vito Bellini, Angelo Schiavone, Tommaso {Di Noia}, Azzurra Ragone, Eugenio {Di Sciascio}},
  title = {Computing recommendations via a Knowledge Graph-aware Autoencoder},
  booktitle = {Proceedings of the RecSys 2018 Workshop on Recommendation in Complex
               Scenarios co-located with 12th {ACM} Conference on Recommender Systems
