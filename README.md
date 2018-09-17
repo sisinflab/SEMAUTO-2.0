@@ -16,8 +16,8 @@ If you publish research that uses SEMAUTO-2.0, please cite it as
 @InProceedings{DOTD16, 
  author = {Vito Bellini, Angelo Schiavone, Tommaso {Di Noia}, Azzurra Ragone, Eugenio {Di Sciascio}},
  title = {Computing recommendations via a Knowledge Graph-aware Autoencoder},
- booktitle = {Proceedings of the RecSys 2018 Workshop on Recommendation in Complex
-              Scenarios co-located with 12th {ACM} Conference on Recommender Systems
+ booktitle = {Proceedings of the RecSys 2018 Workshop on Knowledge-aware and Conversational Recommender 
+              Systems (KaRS) co-located with 12th {ACM} Conference on Recommender Systems
               (RecSys 2018), Vancouver, Canada, October 7, 2018.},
  year = {2018}
 } 
