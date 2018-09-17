@@ -1,22 +1,28 @@
 # SEMAUTO-2.0
-Semantics-Aware Autoencoder Neural Network implemented in TensorFlow
-
-## Paper
-**Computing recommendations via a Knowledge Graph-aware Autoencoder**
-
-Vito Bellini, Angelo Schiavone, Tommaso Di Noia, Azzurra Ragone, Eugenio Di Sciascio
-
-[PDF](https://arxiv.org/abs/1807.05006)
-
-### Abstract
-In the last years, deep learning has shown to be a game-changing technology in artificial intelligence thanks to the numerous successes it reached in diverse application fields. Among others, the use of deep learning for the recommendation problem, although new, looks quite promising due to its positive performances in terms of accuracy of recommendation results. In a
-recommendation setting, in order to predict user ratings on unknown items a possible configuration of a deep neural network is that of autoencoders tipically used to produce a lower dimensionality representation of the original
-data. In this paper we present KG-AUTOENCODER, an autoencoder that bases the structure of its neural network on the semanticsaware topology of a knowledge graph thus providing a label for neurons in the hidden layer that are
-eventually used to build a user profile and then compute recommendations. We show the effectiveness of KG-AUTOENCODER in terms of accuracy, diversity and novelty by comparing with state of the art recommendation algorithms.
-
-## Introduction
+Semantics-Aware Autoencoder Neural Network implemented in TensorFlow.
 
 SEMAUTO is a Semantics-Aware Autoencoder Neural Network which exploits knowledge encoded in a Knowledge Graph in order to build an Autoencoder whose topology reflects connections in the KG to weigh features related to rated items to build an explicit representation of the user profile.
+
+In the last years, deep learning has shown to be a game-changing technology in artificial intelligence thanks to the numerous successes it reached in diverse application fields. Among others, the use of deep learning for the recommendation problem, although new, looks quite promising due to its positive performances in terms of accuracy of recommendation results. In a recommendation setting, in order to predict user ratings on unknown items a possible configuration of a deep neural network is that of autoencoders tipically used to produce a lower dimensionality representation of the original
+data. SEMAUTO is an autoencoder that bases the structure of its neural network on the semantics-aware topology of a knowledge graph thus providing an explicit label for neurons in the hidden layer that are eventually used to build a user profile and then compute recommendations. It has been shown that SEMAUTO outperforms other state of the art algorithms in terms of accuracy, diversity and novelty of recommended results.
+
+The evaluation has been performed by adopting the [RankSys](https://github.com/RankSys/RankSys) Java library.
+
+## Reference
+
+If you publish research that uses SEMAUTO-2.0, please cite it as
+~~~
+@InProceedings{DOTD16, 
+ author = {Vito Bellini, Angelo Schiavone, Tommaso {Di Noia}, Azzurra Ragone, Eugenio {Di Sciascio},
+ title = {Computing recommendations via a Knowledge Graph-aware Autoencoder},
+ booktitle = {Proceedings of the RecSys 2018 Workshop on Recommendation in Complex
+              Scenarios co-located with 12th {ACM} Conference on Recommender Systems
+              (RecSys 2018), Vancouver, Canada, October 7, 2018.},
+ year = {2018}
+} 
+~~~
+The full paper describing the overall approach is available here [PDF](https://arxiv.org/abs/1807.05006)
+
 
 ## Configuration
 
@@ -100,6 +106,12 @@ save = predictions
 $ run.sh
 ```
 
-## Evaluation
+## Credits
+This library has been developed by Vito Bellini and Angelo Schiavone while working at [SisInf Lab](http://sisinflab.poliba.it) under the supervision of Tommaso Di Noia.  
 
-We used the well know [RankSys](https://github.com/RankSys/RankSys) Java library to evaluate our recommendations.
+## Contacts
+Vito Bellini, vito [dot] bellini [at] poliba [dot] it 
+
+Tommaso Di Noia, tommaso [dot] dinoia [at] poliba [dot] it  
+
+Angelo Schiavone, angelo [dot] schiavone [at] poliba [dot] it
